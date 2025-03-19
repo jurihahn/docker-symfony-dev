@@ -10,3 +10,22 @@ services:
       - "7080:7080"
     volumes:
       - ./app:/var/www/${PROJECT_NAME}
+
+  db:
+    image: mariadb
+    container_name: db_${PROJECT_NAME}
+    volumes:
+      - ./mariadb/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin_${PROJECT_NAME}
+    environment:
+      - PMA_HOSTS=db_${PROJECT_NAME}
+      - PMA_USER=root
+      - PMA_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    restart: always
+    ports:
+      - "8080:80"
