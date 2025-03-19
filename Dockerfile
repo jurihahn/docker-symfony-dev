@@ -2,8 +2,8 @@ FROM php:8.4-cli-alpine
 
 LABEL maintainer="Juri Hahn <juri@hahn21.de>"
 
-# Install required packages: git, unzip, wget (needed for installing Symfony CLI)
-RUN apk add --no-cache git unzip wget
+# Install required packages: git, unzip, wget, libzip-dev and zlib-dev
+RUN apk add --no-cache git unzip wget libzip-dev zlib-dev
 
 # Install PHP zip extension
 RUN docker-php-ext-install zip
@@ -18,15 +18,13 @@ RUN wget https://get.symfony.com/cli/installer -O - | sh && \
 # Set working directory
 WORKDIR /var/www
 
-# Copy the entrypoint script
+# Copy the entrypoint script and make it executable
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Expose port 8000 for the Symfony server
 EXPOSE 8000
 
-# Set the entrypoint
+# Set the entrypoint and default command
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-
-# Default command is empty because the entrypoint handles launching
 CMD []
