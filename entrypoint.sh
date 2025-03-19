@@ -31,7 +31,7 @@ sleep 2
 
 # Attach the custom domain (e.g., my_symfony_app.wip) to the Symfony server
 echo "Attaching domain ${PROJECT_NAME}.wip to the Symfony server..."
-symfony proxy:domain:attach ${PROJECT_NAME}.wip || echo "Domain attachment failed."
+symfony proxy:domain:attach ${PROJECT_NAME} || echo "Domain attachment failed."
 
 # Wait for the server process to end
 wait $SERVER_PID
