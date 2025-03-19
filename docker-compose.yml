@@ -9,4 +9,4 @@ services:
       - "8000:8000"
       - "7080:7080"
     volumes:
-      - ./${PROJECT_NAME}:/var/www/${PROJECT_NAME}
+      - ./app:/var/www/${PROJECT_NAME}
