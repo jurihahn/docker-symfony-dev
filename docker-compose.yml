@@ -1,10 +1,12 @@
 services:
   symfony:
     image: jurihahn/symfony-dev:latest
+    env_file:
+      - .env
     environment:
-      - PROJECT_NAME=my_symfony_app
+      - PROJECT_NAME=${PROJECT_NAME}
     ports:
       - "8000:8000"
       - "7080:7080"
     volumes:
-      - ./my_symfony_app:/var/www/my_symfony_app
+      - ./${PROJECT_NAME}:/var/www/${PROJECT_NAME}
