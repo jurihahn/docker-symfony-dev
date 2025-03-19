@@ -22,9 +22,6 @@ WORKDIR /var/www
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# Expose port 8000 for the Symfony server
-EXPOSE 8000
-
 # Set the entrypoint and default command
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD []

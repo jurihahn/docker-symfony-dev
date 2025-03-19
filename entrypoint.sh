@@ -28,9 +28,9 @@ fi
 echo "Installing Symfony CLI CA (if needed)..."
 symfony server:ca:install --quiet || true
 
-# Start the Symfony server on port 8000 with --allow-all-ip in the background
-echo "Starting Symfony server on port 8000 with --allow-all-ip..."
-symfony server:start --port=8000 --allow-all-ip &
+# Start the Symfony server on port ${SYMFONY_SERVER_PORT} with --allow-all-ip in the background
+echo "Starting Symfony server on port ${SYMFONY_SERVER_PORT} with --allow-all-ip..."
+symfony server:start --port=${SYMFONY_SERVER_PORT} --allow-all-ip &
 SERVER_PID=$!
 
 # Wait briefly to allow the server to start

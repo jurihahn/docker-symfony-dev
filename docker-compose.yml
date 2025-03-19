@@ -5,9 +5,10 @@ services:
       - .env
     environment:
       - PROJECT_NAME=${PROJECT_NAME}
+      - SYMFONY_SERVER_PORT=${SYMFONY_SERVER_PORT}
     ports:
-      - "8000:8000"
-      - "7080:7080"
+      - "${SYMFONY_SERVER_PORT}:8000"
+      - "${SYMFONY_PROXY_PORT}:7080"
     volumes:
       - ./app:/var/www/${PROJECT_NAME}
 
@@ -28,4 +29,4 @@ services:
       - PMA_PASSWORD=${MYSQL_ROOT_PASSWORD}
     restart: always
     ports:
-      - "8080:80"
+      - "${PHP_MY_ADMIN_PORT}:80"
