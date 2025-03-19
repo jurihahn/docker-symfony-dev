@@ -5,8 +5,8 @@ LABEL maintainer="Juri Hahn <juri@hahn21.de>"
 # Install required packages: git, unzip, wget, bash, libzip-dev, and zlib-dev
 RUN apk add --no-cache git unzip wget bash libzip-dev zlib-dev
 
-# Install PHP zip extension
-RUN docker-php-ext-install zip
+# Install PHP extensions: zip, pdo_mysql, and mysqli
+RUN docker-php-ext-install zip pdo_mysql mysqli
 
 # Install Composer by copying it from the official Composer image
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
