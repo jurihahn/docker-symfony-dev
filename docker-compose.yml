@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  symfony:
+    image: jurihahn/symfony-dev:latest
+    environment:
+      - PROJECT_NAME=my_symfony_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./my_symfony_app:/var/www/my_symfony_app
