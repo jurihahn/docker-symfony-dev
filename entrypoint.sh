@@ -21,9 +21,9 @@ cd "$PROJECT_DIR"
 echo "Installing Symfony CLI CA (if needed)..."
 symfony server:ca:install --quiet || true
 
-# Start the Symfony server on port 8000 in the background
-echo "Starting Symfony server on port 8000..."
-symfony server:start --port=8000 &
+# Start the Symfony server on port 8000 with --allow-all-ip in the background
+echo "Starting Symfony server on port 8000 with --allow-all-ip..."
+symfony server:start --port=8000 --allow-all-ip &
 SERVER_PID=$!
 
 # Wait briefly to allow the server to start
