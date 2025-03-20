@@ -43,7 +43,7 @@ MYSQL_PASSWORD=my_db_password
 MYSQL_ROOT_PASSWORD=password
 SYMFONY_SERVER_PORT=8000
 SYMFONY_PROXY_PORT=7080
-PHP_MY_ADMIN_PORT=8080
+PHP_MY_ADMIN_PORT=8888
 ```
 * **PROJECT_NAME**: The name of your Symfony project.
 * **MYSQL_DATABASE**: Database for Symfony App.
@@ -61,11 +61,11 @@ PHP_MY_ADMIN_PORT=8080
 ## Access Your Services
 ### **Symfony Application**:
 Access your Symfony application in your browser at:
-   * http://localhost:8000 (or the port specified by SYMFONY_SERVER_PORT), or
-   * If using domain proxying with Symfony CLI, add an entry to your hosts file (e.g., 127.0.0.1 my_symfony_app) and visit https://my_symfony_app.
+   * [http://localhost:8000](http://localhost:8000) (or the port specified by SYMFONY_SERVER_PORT), or
+   * If using domain proxying with Symfony CLI, add an entry to your hosts file (e.g., 127.0.0.1 my_symfony_app.wip) and visit [https://my_symfony_app.wip](https://my_symfony_app.wip).
 ### **phpMyAdmin**:
 Access phpMyAdmin at:
-   * http://localhost:8080 (or the port specified by PHP_MY_ADMIN_PORT).
+   * [http://localhost:8888](http://localhost:8888) (or the port specified by PHP_MY_ADMIN_PORT).
 ### **MariaDB**:
 The MariaDB container stores its data in ./mariadb/mysql on the host. Use the credentials specified in the .env file to connect.
 
