@@ -29,7 +29,7 @@ All configuration settings (such as the project name and database credentials) a
    ```bash
    docker compose up -d
    ```
-4. Start docker containers
+4. Stop docker containers
    ```bash
    docker compose down
    ```
