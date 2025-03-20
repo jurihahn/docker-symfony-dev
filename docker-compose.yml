@@ -19,6 +19,9 @@ services:
       - ./mariadb/mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -27,6 +30,5 @@ services:
       - PMA_HOSTS=db_${PROJECT_NAME}
       - PMA_USER=root
       - PMA_PASSWORD=${MYSQL_ROOT_PASSWORD}
-    restart: always
     ports:
       - "${PHP_MY_ADMIN_PORT}:80"

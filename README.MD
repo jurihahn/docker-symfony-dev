@@ -29,20 +29,30 @@ All configuration settings (such as the project name and database credentials) a
    ```bash
    docker compose up -d
    ```
+4. Start docker containers
+   ```bash
+   docker compose down
+   ```
 
 ## Configure Environment Variables (.env)
 ```dotenv
 PROJECT_NAME=my_symfony_app
+MYSQL_DATABASE=my_database
+MYSQL_USER=my_db_user
+MYSQL_PASSWORD=my_db_password
 MYSQL_ROOT_PASSWORD=password
 SYMFONY_SERVER_PORT=8000
 SYMFONY_PROXY_PORT=7080
 PHP_MY_ADMIN_PORT=8080
 ```
-* PROJECT_NAME: The name of your Symfony project.
-* MYSQL_ROOT_PASSWORD: The root password for the MariaDB container.
-* SYMFONY_SERVER_PORT: The port on which the Symfony CLI server will run inside the container.
-* SYMFONY_PROXY_PORT: The port on which the Symfony proxy will run.
-* PHP_MY_ADMIN_PORT: The host port to access phpMyAdmin.
+* **PROJECT_NAME**: The name of your Symfony project.
+* **MYSQL_DATABASE**: Database for Symfony App.
+* **MYSQL_USER**: Database user for Symfony App.
+* **MYSQL_PASSWORD**: Database user password for Symfony App.
+* **MYSQL_ROOT_PASSWORD**: The root password for the MariaDB container.
+* **SYMFONY_SERVER_PORT**: The port on which the Symfony CLI server will run inside the container.
+* **SYMFONY_PROXY_PORT**: The port on which the Symfony proxy will run.
+* **PHP_MY_ADMIN_PORT**: The host port to access phpMyAdmin.
 
 ## Prepare the Application Directory
 1. Place your application code (or an empty folder if starting fresh) in the `./app` directory.
