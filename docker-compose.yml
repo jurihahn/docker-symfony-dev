@@ -10,13 +10,13 @@ services:
       - "${SYMFONY_SERVER_PORT}:8000"
       - "${SYMFONY_PROXY_PORT}:7080"
     volumes:
-      - ./app:/var/www/${PROJECT_NAME}
+      - ${PROJECT_DIR}:/var/www/${PROJECT_NAME}
 
   db:
     image: mariadb
     container_name: db_${PROJECT_NAME}
     volumes:
-      - ./mariadb/mysql:/var/lib/mysql
+      - ${MYSQL_DATA_DIR}:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
       MYSQL_DATABASE: "${MYSQL_DATABASE}"

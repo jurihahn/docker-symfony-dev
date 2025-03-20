@@ -21,7 +21,7 @@ All configuration settings (such as the project name and database credentials) a
 
 1. Download **docker-compose.yml** and **.env**
 2. Edit **.env**:
-   * Set projekt name
+   * Set project name.
      ```dotenv 
      PROJECT_NAME=my_app_name
      ```
@@ -34,9 +34,13 @@ All configuration settings (such as the project name and database credentials) a
    docker compose down
    ```
 
+---
+
 ## Configure Environment Variables (.env)
 ```dotenv
 PROJECT_NAME=my_symfony_app
+PROJECT_DIR=./app
+MYSQL_DATA_DIR=./mariadb/mysql
 MYSQL_DATABASE=my_database
 MYSQL_USER=my_db_user
 MYSQL_PASSWORD=my_db_password
@@ -46,17 +50,23 @@ SYMFONY_PROXY_PORT=7080
 PHP_MY_ADMIN_PORT=8888
 ```
 * **PROJECT_NAME**: The name of your Symfony project.
-* **MYSQL_DATABASE**: Database for Symfony App.
-* **MYSQL_USER**: Database user for Symfony App.
-* **MYSQL_PASSWORD**: Database user password for Symfony App.
+* **PROJECT_DIR**: The directory on the host where your Symfony project code resides.
+* **MYSQL_DATA_DIR**: The host directory where MariaDB will store its database files.
+* **MYSQL_DATABASE**: The database name for your Symfony application.
+* **MYSQL_USER**: The database user for your Symfony application.
+* **MYSQL_PASSWORD**: The password for the Symfony application's database user.
 * **MYSQL_ROOT_PASSWORD**: The root password for the MariaDB container.
 * **SYMFONY_SERVER_PORT**: The port on which the Symfony CLI server will run inside the container.
 * **SYMFONY_PROXY_PORT**: The port on which the Symfony proxy will run.
 * **PHP_MY_ADMIN_PORT**: The host port to access phpMyAdmin.
 
+---
+
 ## Prepare the Application Directory
 1. Place your application code (or an empty folder if starting fresh) in the `./app` directory.
 2. The volume mapping in `docker-compose.yml` mounts `./app` to `/var/www/${PROJECT_NAME}` inside the container.
+
+---
 
 ## Access Your Services
 ### **Symfony Application**:
@@ -68,6 +78,8 @@ Access phpMyAdmin at:
    * [http://localhost:8888](http://localhost:8888) (or the port specified by PHP_MY_ADMIN_PORT).
 ### **MariaDB**:
 The MariaDB container stores its data in ./mariadb/mysql on the host. Use the credentials specified in the .env file to connect.
+
+---
 
 ## Troubleshooting
 ### View Logs:
