@@ -13,7 +13,7 @@ services:
       - ${PROJECT_DIR}:/var/www/${PROJECT_NAME}
 
   db:
-    image: mariadb
+    image: mariadb:lts
     container_name: db_${PROJECT_NAME}
     volumes:
       - ${MYSQL_DATA_DIR}:/var/lib/mysql
