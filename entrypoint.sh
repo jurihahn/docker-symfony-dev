@@ -20,6 +20,21 @@ if [ ! -d "$PROJECT_DIR" ] || [ -z "$(ls -A "$PROJECT_DIR" 2>/dev/null)" ]; then
     composer require symfony/orm-pack
     echo "Installing Symfony Maker Bundle (dev)..."
     composer require --dev symfony/maker-bundle
+
+    # Automatically generate or update .env.dev with DATABASE_URL if not already set
+    ENV_FILE="$PROJECT_DIR/.env.dev"
+    DB_URL="DATABASE_URL=mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db_${PROJECT_NAME}:3306/${MYSQL_DATABASE}?serverVersion=mariadb"
+    if [ -f "$ENV_FILE" ]; then
+        if grep -q "^DATABASE_URL=" "$ENV_FILE"; then
+            echo "DATABASE_URL already exists in $ENV_FILE"
+        else
+            echo "$DB_URL" >> "$ENV_FILE"
+            echo "DATABASE_URL added to $ENV_FILE"
+        fi
+    else
+        echo "$DB_URL" > "$ENV_FILE"
+        echo "$ENV_FILE created with DATABASE_URL"
+    fi
 else
     cd "$PROJECT_DIR"
 fi
