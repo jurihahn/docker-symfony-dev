@@ -7,7 +7,12 @@ if [ -z "$PROJECT_NAME" ]; then
     exit 1
 fi
 
-PROJECT_DIR="/var/www/$PROJECT_NAME"
+# if set PROJECT_DIR_CONTAINER -> PROJECT_DIR="$PROJECT_DIR_CONTAINER" else PROJECT_DIR="/var/www/$PROJECT_NAME"
+if [ -n "$PROJECT_DIR_CONTAINER" ]; then
+    PROJECT_DIR="$PROJECT_DIR_CONTAINER"
+else
+    PROJECT_DIR="/var/www/$PROJECT_NAME"
+fi
 
 # If the project directory does not exist or is empty, create a new Symfony project
 if [ ! -d "$PROJECT_DIR" ] || [ -z "$(ls -A "$PROJECT_DIR" 2>/dev/null)" ]; then

@@ -40,6 +40,7 @@ All configuration settings (such as the project name and database credentials) a
 ```dotenv
 PROJECT_NAME=my_symfony_app
 PROJECT_DIR=./app
+PROJECT_DIR_CONTAINER=
 MYSQL_DATA_DIR=./mariadb/mysql
 MYSQL_DATABASE=my_database
 MYSQL_USER=my_db_user
@@ -48,9 +49,11 @@ MYSQL_ROOT_PASSWORD=password
 SYMFONY_SERVER_PORT=8000
 SYMFONY_PROXY_PORT=7080
 PHP_MY_ADMIN_PORT=8888
+MAILER_UI_PORT=8025
 ```
 * **PROJECT_NAME**: The name of your Symfony project.
 * **PROJECT_DIR**: The directory on the host where your Symfony project code resides.
+* **PROJECT_DIR_CONTAINER=**: The directory in container where your Symfony project code resides. If empty when `/var/www/ + PROJECT_NAME`
 * **MYSQL_DATA_DIR**: The host directory where MariaDB will store its database files.
 * **MYSQL_DATABASE**: The database name for your Symfony application.
 * **MYSQL_USER**: The database user for your Symfony application.
@@ -59,6 +62,7 @@ PHP_MY_ADMIN_PORT=8888
 * **SYMFONY_SERVER_PORT**: The port on which the Symfony CLI server will run inside the container.
 * **SYMFONY_PROXY_PORT**: The port on which the Symfony proxy will run.
 * **PHP_MY_ADMIN_PORT**: The host port to access phpMyAdmin.
+* **MAILER_UI_PORT**: The host port to access Webmail interface
 
 ---
 
