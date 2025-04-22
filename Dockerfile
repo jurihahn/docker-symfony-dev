@@ -2,11 +2,27 @@ FROM php:8.4-cli-alpine
 
 LABEL maintainer="Juri Hahn <juri@hahn21.de>"
 
-# Install required packages: git, unzip, wget, bash, libzip-dev, and zlib-dev
-RUN apk add --no-cache git unzip wget bash libzip-dev zlib-dev
+# Install required packages
+RUN apk add --no-cache \
+    git \
+    unzip \
+    wget \
+    bash \
+    libzip-dev \
+    zlib-dev \
+    freetype-dev \
+    libjpeg-turbo-dev \
+    libpng-dev \
+    libwebp-dev \
+    libxpm-dev
 
-# Install PHP extensions: zip, pdo_mysql, and mysqli
-RUN docker-php-ext-install zip pdo_mysql mysqli
+# Install PHP extensions
+RUN docker-php-ext-configure gd \
+    --with-freetype \
+    --with-jpeg \
+    --with-webp \
+    --with-xpm && \
+    docker-php-ext-install zip pdo_mysql mysqli gd
 
 # Install Composer by copying it from the official Composer image
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
